@@ -1,6 +1,14 @@
 <?php
 
+use App\Http\Controllers\ClientesController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContatoController;
+use App\Http\Controllers\FornecedoresController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProdutosController;
+use App\Http\Controllers\SobreNosController;
+use App\Http\Controllers\TesteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +21,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::resource('/sobre-nos', SobreNosController::class);
+Route::resource('/contato', ContatoController::class);
+Route::resource('/login', LoginController::class);
+
+Route::get('/testes/{nome}/{sobrenome}', [TesteController::class, 'teste'])->name('pages.testes');
+
+Route::prefix('app')->group(function () {
+    Route::resource('/clientes', ClientesController::class);
+    Route::resource('/fornecedores', FornecedoresController::class);
+    Route::resource('/produtos', ProdutosController::class);
 });
+// Route::fallback(function () {
+//     echo "ABC";
+// });
