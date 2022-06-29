@@ -33,6 +33,7 @@ Route::prefix('app')->group(function () {
     Route::resource('/fornecedores', FornecedoresController::class);
     Route::resource('/produtos', ProdutosController::class);
 });
+
 // Route::fallback(function () {
 //     echo "ABC";
 // });

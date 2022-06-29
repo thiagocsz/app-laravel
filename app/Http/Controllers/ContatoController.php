@@ -34,7 +34,7 @@ class ContatoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        var_dump($_POST);
     }
 
     /**
